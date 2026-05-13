@@ -15,6 +15,12 @@ public class Page{
         this.reponse = new ArrayList<>();
     }
 
+    public Page(int numero,  String enigme,List<String> rep){
+        this.numero = numero;
+        this.enigme = enigme;
+        this.reponse = rep;
+    }
+
     public void setReponse(String choix){
         this.reponse.add(choix);
     }
@@ -23,13 +29,13 @@ public class Page{
         return this.numero;
     }
 
-    public String getEnigme(){
+    public String getTexte(){
         return this.enigme;
     }
 
     public String afficheEnig(){
         int cpt =0;
-        String phr = this.getEnigme();
+        String phr = this.getTexte();
         phr +="\n";
         for(String i : this.reponse){
         phr += String.valueOf(cpt)+" : "+i+"\n";
