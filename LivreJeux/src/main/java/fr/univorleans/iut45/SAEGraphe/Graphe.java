@@ -22,13 +22,21 @@ public class Graphe {
         
     }
 
+    public Page premierePage(){
+
+    }
+
     public boolean tousObjets(){
         return inventaire.size()>=10;
     }
 
+    public Graph<page> getGraphe(){
+        return this.graphe;
+    }
+
     public void explorePage(Page page){
         page.afficheEnig();
-        List<Page> possibilités = graphe.getEdges(page);
+        List<Page> possibilités = this.graphe.getEdges(page);
 
         String rep = System.console().readLine();
         rep = rep.strip().toLowerCase();
