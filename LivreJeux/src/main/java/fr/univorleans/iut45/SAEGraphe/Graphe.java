@@ -1,10 +1,14 @@
 package fr.univorleans.iut45.SAEGraphe;
 
-import org.jgrapht.Graph;
-import org.jgrapht.graph.DefaultEdge;
-import org.jgrapht.graph.DefaultDirectedGraph;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
+
+import org.jgrapht.Graph;
+import org.jgrapht.Graphs;
+import org.jgrapht.graph.DefaultDirectedGraph;
+import org.jgrapht.graph.DefaultEdge;
+import org.jgrapht.graph.SimpleGraph;
+import java.util.Random;
 
 public class Graphe {
     
@@ -14,7 +18,8 @@ public class Graphe {
 
     public Graphe(){
 
-        this.graphe = new DefaultDirectedGraph();
+        this.graphe = new SimpleGraph<>(DefaultEdge.class);
+        
         this.inventaire = new ArrayList<>();
     }
 
@@ -36,11 +41,14 @@ public class Graphe {
 
     public void explorePage(Page page){
         page.afficheEnig();
+<<<<<<< HEAD
         List<Page> possibilités = this.graphe.getEdges(page);
 
+=======
+        List<Page> possibilités = graphe.getEdges(page);
+>>>>>>> f11df6bdeb5cae021a4f5cf24560b14d33b933e0
         String rep = System.console().readLine();
         rep = rep.strip().toLowerCase();
-
         if (rep.equals("a")) {
             this.explorePage(possibilités.get(0));
         }
