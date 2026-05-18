@@ -1,22 +1,18 @@
 package fr.univorleans.iut45.SAEGraphe;
 
-public class PageDebut {
-        private boolean debut;
-        private int num;
+import java.util.List;
 
-    PageDebut(boolean debut){
-        this.debut = debut;
-        this.num = 1;
+public class PageDebut extends Page{
+
+    PageDebut(int numero,  String enigme){
+        super(numero,enigme);
     }
 
-    boolean getDebut(){
-        return this.debut;
-    }
-    int getNum(){
-        return this.num;
+    PageDebut(int numero,  String enigme,List<String> rep){
+        super(numero,enigme,rep);
     }
 
-    String Debutdujeu(){
+    public String debutDuJeu(){
         if (getNum() == 1){
             return "Ceci est la page du début du jeu !";
 
