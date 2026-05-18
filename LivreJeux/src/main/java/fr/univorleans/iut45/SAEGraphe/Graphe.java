@@ -8,6 +8,7 @@ import org.jgrapht.Graphs;
 import org.jgrapht.graph.DefaultDirectedGraph;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleGraph;
+import java.util.Random;
 
 public class Graphe {
     
@@ -18,6 +19,7 @@ public class Graphe {
     public Graphe(){
 
         this.graphe = new SimpleGraph<>(DefaultEdge.class);
+        
         this.inventaire = new ArrayList<>();
     }
 
