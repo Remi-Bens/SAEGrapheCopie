@@ -26,4 +26,12 @@ public class Affichage {
         }
         
     }
+<<<<<<< HEAD
+=======
+
+    public void erreur(String msg) {
+        System.out.println("Erreur: "+msg);
+    }
+
+>>>>>>> a22d24f (Ajout de la méthode erreur dans Affichage)
 }
