@@ -1,5 +1,6 @@
 package fr.univorleans.iut45.SAEGraphe;
 
+import java.util.List;
 import java.util.Stack;
 
 import org.jgrapht.graph.DefaultEdge;
@@ -15,9 +16,14 @@ public class AlgoPronf {
 
      public boolean start(){
         Page prem = gr.premierePage();
+<<<<<<< HEAD
         prem.lire();
         for(DefaultEdge e : gr.getGraphe().outgoingEdgesOf(prem)){
             Page p = this.gr.getGraphe().getEdgeTarget(e);
+=======
+        List<Page> noeudsuiv = gr.successorListOf(prem);
+        for(Page p : ){
+>>>>>>> 67f2a1b (test recup graphe)
             pile.push(p);}
         
         while(!pile.isEmpty()){
