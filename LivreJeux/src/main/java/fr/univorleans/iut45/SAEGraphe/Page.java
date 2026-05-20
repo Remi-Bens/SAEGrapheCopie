@@ -9,19 +9,22 @@ public class Page{
     private String enigme;
     private List<String> reponse;
     private boolean lecture;
+    private boolean objet;
 
-    public Page(int numero,  String enigme){
+    public Page(int numero,  String enigme,boolean objet){
         this.numero = numero;
         this.enigme = enigme;
         this.reponse = new ArrayList<>();
         this.lecture = false;
+        this.objet = objet;
     }
 
-    public Page(int numero,  String enigme,List<String> rep){
+    public Page(int numero,  String enigme,List<String> rep,boolean objet){
         this.numero = numero;
         this.enigme = enigme;
         this.reponse = rep;
         this.lecture = false;
+        this.objet = objet;
     }
 
     public void setReponse(String choix){
@@ -30,6 +33,10 @@ public class Page{
 
     public int getNum(){
         return this.numero;
+    }
+
+    public boolean getObjet() {
+        return this.objet;
     }
 
     public String getTexte(){
