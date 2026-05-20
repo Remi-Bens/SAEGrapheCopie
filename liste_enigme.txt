@@ -1,0 +1,16 @@
+Que dit un coq pour séduire une poule ? 
+T'as de beau yeux
+T'as un beau bec
+T'as de oeufs tu sais ?
+
+À quelle heure, sur un radio-réveil au format 00:00, la somme de tous les chiffres est maximale ?
+19:59
+23:59
+18:59
+12:59
+
+Il y a un pere et un fils, à eux deux leurs âges est égal à 36 ans. Et le père à 30 ans de plus que le fils. Quel âge à le fils?
+3 ans
+6 ans
+1 ans
+
