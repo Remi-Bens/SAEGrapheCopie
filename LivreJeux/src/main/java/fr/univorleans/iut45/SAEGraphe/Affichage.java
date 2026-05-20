@@ -26,9 +26,7 @@ public class Affichage {
         }
         
     }
-
     public void erreur(String msg) {
         System.out.println("Erreur: "+msg);
     }
-
 }
