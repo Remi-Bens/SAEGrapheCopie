@@ -1,7 +1,8 @@
 package fr.univorleans.iut45.SAEGraphe;
 
-import java.util.List;
 import java.util.Stack;
+
+import org.jgrapht.graph.DefaultEdge;
 
 public class AlgoPronf {
     Stack<Page> pile;
@@ -12,23 +13,24 @@ public class AlgoPronf {
         this.gr = g;
     }
 
-    public List<Page> successorListOf(Page vertex){
-        return this.gr.getGraphe().successorListOf(vertex);
-    }
-
-     public boolean commencer(){
+     public boolean start(){
         Page prem = gr.premierePage();
-        List<Page> noeudsuiv = gr.successorListOf(prem);
-        for(Page p : noeudsuiv){
+        prem.lire();
+        for(DefaultEdge e : gr.getGraphe().outgoingEdgesOf(prem)){
+            Page p = this.gr.getGraphe().getEdgeTarget(e);
             pile.push(p);}
         
         while(!pile.isEmpty()){
             Page suiv = pile.pop();
             suiv.lire();
             System.out.println("La page n° "+suiv.getNum()+" est lu !");
-            for(Page p : gr.successorListOf(suiv)){
-                if(!p.estLue()){
-            pile.push(p);}}
-        }
+            for(DefaultEdge edge : gr.getGraphe().outgoingEdgesOf(suiv)){
+            Page target = gr.getGraphe().getEdgeTarget(edge);
+            if(!target.estLue()){
+                pile.push(target);}
+                }
+            }
+        return true;
     }
 }
+
