@@ -11,7 +11,7 @@ import java.util.Random;
 
 public class Graphe {
     
-    private Graph<Page,DefaultEdge> graphe;
+    private DirectedGraph<Page,DefaultEdge> graphe;
     private List<Objet> inventaire;
     private Affichage affichage;
 
@@ -23,7 +23,7 @@ public class Graphe {
     }
 
     public void start(){
-        //lancement de explorePage sur la première page
+        this.graphe.successorListOf();
     }
 
     public Page premierePage() throws PageNotFoundException{
