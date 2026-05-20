@@ -12,18 +12,22 @@ public class AlgoPronf {
         this.gr = g;
     }
 
-     public boolean start(){
+    public List<Page> successorListOf(Page vertex){
+        return this.gr.getGraphe().successorListOf(vertex);
+    }
+
+     public boolean commencer(){
         Page prem = gr.premierePage();
         List<Page> noeudsuiv = gr.successorListOf(prem);
-        for(Page p : ){
+        for(Page p : noeudsuiv){
             pile.push(p);}
         
         while(!pile.isEmpty()){
             Page suiv = pile.pop();
-            suiv.lecture();
+            suiv.lire();
             System.out.println("La page n° "+suiv.getNum()+" est lu !");
-            for(Page p : gr.getGraphe().successorListOf(suiv)){
-                if(!p.estLu()){
+            for(Page p : gr.successorListOf(suiv)){
+                if(!p.estLue()){
             pile.push(p);}}
         }
     }
