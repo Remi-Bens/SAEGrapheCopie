@@ -23,7 +23,7 @@ public class Graphe {
     }
 
     public void start(){
-        
+        //lancement de explorePage sur la première page
     }
 
     public Page premierePage() throws PageNotFoundException{
