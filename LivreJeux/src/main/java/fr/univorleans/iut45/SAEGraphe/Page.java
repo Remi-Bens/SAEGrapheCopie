@@ -21,12 +21,13 @@ public class Page{
         this.objet = objet;
     }
 
-    public Page(int numero,  String enigme,List<String> rep,boolean objet){
+    public Page(int numero,  String enigme,List<String> rep,boolean objet, int pos){
         this.numero = numero;
         this.enigme = enigme;
         this.reponse = rep;
         this.lecture = false;
         this.objet = objet;
+        this.pos = pos;
     }
 
     public void setReponse(String choix){
