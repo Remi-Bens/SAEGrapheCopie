@@ -56,6 +56,10 @@ public class Page{
         return this.enigme;
     }
 
+    public int getnbReponses(){
+        return reponse.size();
+    }
+
     public boolean estLue(){
         return this.lecture;
     }
