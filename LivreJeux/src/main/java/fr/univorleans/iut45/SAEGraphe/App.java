@@ -8,6 +8,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        Affichage a = new Affichage(false);
+        a.Bienvenue();
     }
 }
