@@ -10,6 +10,7 @@ public class Page{
     private List<String> reponse;
     private boolean lecture;
     private boolean objet;
+    private boolean fin;
 
     public Page(int numero,  String enigme,boolean objet){
         this.numero = numero;
@@ -37,6 +38,10 @@ public class Page{
 
     public boolean getObjet() {
         return this.objet;
+    }
+
+    public boolean getFin(){
+        return this.fin;
     }
 
     public String getTexte(){
