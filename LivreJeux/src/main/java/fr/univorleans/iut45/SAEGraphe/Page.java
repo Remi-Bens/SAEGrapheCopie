@@ -10,7 +10,7 @@ public class Page{
     private List<String> reponse;
     private boolean lecture;
     private boolean objet;
-    private boolean fin;
+    private int pos;
 
     public Page(int numero,  String enigme,boolean objet){
         this.numero = numero;
@@ -41,7 +41,13 @@ public class Page{
     }
 
     public boolean getFin(){
-        return this.fin;
+        if(this.pos > 0){return true;}
+        return false;
+    }
+
+    public boolean getDeb(){
+        if(this.pos < 0){return true;}
+        return false;
     }
 
     public String getTexte(){
