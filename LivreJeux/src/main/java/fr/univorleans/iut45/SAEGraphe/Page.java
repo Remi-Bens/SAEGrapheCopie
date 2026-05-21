@@ -10,6 +10,8 @@ public class Page{
     private List<String> reponse;
     private boolean lecture;
     private boolean objet;
+    private int pos;
+
 
     public Page(int numero,  String enigme,boolean objet){
         this.numero = numero;
@@ -19,12 +21,13 @@ public class Page{
         this.objet = objet;
     }
 
-    public Page(int numero,  String enigme,List<String> rep,boolean objet){
+    public Page(int numero,  String enigme,List<String> rep,boolean objet, int pos){
         this.numero = numero;
         this.enigme = enigme;
         this.reponse = rep;
         this.lecture = false;
         this.objet = objet;
+        this.pos = pos;
     }
 
     public void setReponse(String choix){
@@ -37,6 +40,16 @@ public class Page{
 
     public boolean getObjet() {
         return this.objet;
+    }
+
+    public boolean getFin(){
+        if(this.pos > 0){return true;}
+        return false;
+    }
+
+    public boolean getDeb(){
+        if(this.pos < 0){return true;}
+        return false;
     }
 
     public String getTexte(){
