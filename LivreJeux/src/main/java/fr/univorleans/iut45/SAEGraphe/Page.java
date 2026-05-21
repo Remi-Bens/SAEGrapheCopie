@@ -12,6 +12,7 @@ public class Page{
     private boolean objet;
     private int pos;
 
+
     public Page(int numero,  String enigme,boolean objet){
         this.numero = numero;
         this.enigme = enigme;
