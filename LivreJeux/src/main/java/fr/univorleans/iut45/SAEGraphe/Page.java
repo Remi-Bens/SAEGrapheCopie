@@ -13,20 +13,12 @@ public class Page{
     private int pos;
 
 
-    public Page(int numero,  String enigme,boolean objet){
-        this.numero = numero;
-        this.enigme = enigme;
-        this.reponse = new ArrayList<>();
-        this.lecture = false;
-        this.objet = objet;
-    }
-
-    public Page(int numero,  String enigme,List<String> rep,boolean objet, int pos){
+    public Page(int numero,  String enigme,List<String> rep, int pos){
         this.numero = numero;
         this.enigme = enigme;
         this.reponse = rep;
         this.lecture = false;
-        this.objet = objet;
+        this.objet = false;
         this.pos = pos;
     }
 
@@ -42,13 +34,17 @@ public class Page{
         return this.objet;
     }
 
+    public void setObjet(boolean ob){
+        this.objet = ob;
+    }
+
     public boolean getFin(){
         if(this.pos > 0){return true;}
         return false;
     }
 
     public boolean getDeb(){
-        if(this.pos < 0){return true;}
+        if(this.pos <= 0){return true;}
         return false;
     }
 
@@ -56,7 +52,7 @@ public class Page{
         return this.enigme;
     }
 
-    public int getnbReponses(){
+    public int getNbReponses(){
         return reponse.size();
     }
 
@@ -66,6 +62,14 @@ public class Page{
 
     public void lire(){
         this.lecture = true;
+    }
+
+    public void setFin(){
+        this.pos = 1;
+    }
+
+    public void setDeb(){
+        this.pos = -1;
     }
     
     public String afficheEnig(){
