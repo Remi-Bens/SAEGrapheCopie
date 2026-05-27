@@ -44,7 +44,7 @@ public class Page{
     }
 
     public boolean getDeb(){
-        if(this.pos < 0){return true;}
+        if(this.pos <= 0){return true;}
         return false;
     }
 
