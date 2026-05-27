@@ -56,7 +56,7 @@ public class Page{
         return this.enigme;
     }
 
-    public int getnbReponses(){
+    public int getNbReponses(){
         return reponse.size();
     }
 
