@@ -14,7 +14,7 @@ public class App
     public static void main( String[] args ) {
         List<Page> l = new ArrayList<>();
         for(int i = 0; i< 100; i++){
-            l.add(new Page(i, "", false));
+            l.add(new Page(i, " ", null, 0));
         }
 
         Map<String,List<String>> enigmes = new HashMap<>();
@@ -36,6 +36,7 @@ public class App
         enigmes.put("Girafe = 3, Eléphant = 3, Hippopotame = 5, Lion = … ?",List.of("4", "3", "2", "1"));
         enigmes.put("Ma première lettre est un B, ma dernière un E. Je suis long, dur, je peux être droit mais la plupart du temps je ne le suis pas. Le gens me mangent souvent avec joie. Qui suis-je??",List.of("Carambar", "Baguette", "Banane"));
 
+       
         Affichage a = new Affichage(false);
         a.Bienvenue();
     }
