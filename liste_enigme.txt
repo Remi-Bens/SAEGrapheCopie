@@ -71,3 +71,49 @@ Girafe = 3, Éléphant = 3, Hippopotame = 5, Lion = … ?
 3
 2
 1
+
+On envoie un ARP who has sur votre machine. Quelle est l'adresse de destination ?
+1A:2B:3C:4D:5E
+FF:FF:FF:FF:FF
+00:00:00:00:00
+Comment je peux savoir mon reuf ?!
+
+Plus j'ai de gardiens, moins je suis gardé. Qui suis-je ?
+Un secret
+Une clé
+De l'argent
+
+Qu'est-ce qui a des dents, mais ne mange pas ?
+Un peigne
+Le soleil
+un Sèche cheveux
+
+Je commence la nuit et je termine le matin. Qui suis-je ?
+Le N 
+Le soleil
+La rosée du matin
+
+Quelle est la lettre préférée des bûcherons ?
+Le H 
+Le A 
+Le B 
+
+Quelle est la monnaie des poissons ?
+L'argent
+Le sous marin
+Le chou marin
+
+Qu'est-ce qu'un hippopotame qui fait du camping ?
+Un rhinocerose
+Un singe
+Un hippocampe
+
+Quel est le comble pour un Prof de maths ?
+D'avoir trop de problèmes.
+De ne pas savoir faire des graphes
+De ne pas connaitre Pythagore
+
+Quel est le juron préféré des vampires ?
+Dieux merci !
+Bon sang !
+OMG !
