@@ -13,7 +13,7 @@ public class App
     {
         List<Page> l = new ArrayList<>();
         for(int i = 0; i< 100; i++){
-            l.add(new Page(i, "", false));
+            l.add(new Page(i, " ", null, 0));
         }
         Affichage a = new Affichage(false);
         a.Bienvenue();
