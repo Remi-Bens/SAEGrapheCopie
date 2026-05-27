@@ -48,7 +48,7 @@ public class Page{
     }
 
     public boolean getDeb(){
-        if(this.pos < 0){return true;}
+        if(this.pos <= 0){return true;}
         return false;
     }
 
@@ -56,7 +56,7 @@ public class Page{
         return this.enigme;
     }
 
-    public int getnbReponses(){
+    public int getNbReponses(){
         return reponse.size();
     }
 
@@ -66,6 +66,14 @@ public class Page{
 
     public void lire(){
         this.lecture = true;
+    }
+
+    public void setFin(){
+        this.pos = 1;
+    }
+
+    public void setDeb(){
+        this.pos = -1;
     }
     
     public String afficheEnig(){

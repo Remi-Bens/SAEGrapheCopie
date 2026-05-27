@@ -14,6 +14,63 @@ Il y a un pere et un fils, à eux deux leurs âges est égal à 36 ans. Et le p�
 6 ans
 1 ans
 
+Quest-ce qui est jaune et qui attend?
+Rougeattend
+warning sur maven
+FFFF00
+Jonathan
+
+De tout l'hiver, il est absent, il vient au milieu du printemps, il revient au cœur de l'été, en scrutant vers le O, en automne, vous le trouverez. qui est-il ?
+Le T 
+Le soleil
+Les feuilles
+
+Un homme regarde une photo. Quelqu’un demande : “Qui regardez-vous ?” Il répond : “Je n’ai ni frère ni sœur, mais le père de cet homme est le fils de mon père.” Qui est sur la photo ?
+Son père
+Son fils
+Lui-même enfant
+Son cousin
+
+Un train electrique roule vers le nord et le vent va vers le sud. Dans quel direction va la fumée ?
+Nul part
+Sud
+Nord
+Est
+Ouest
+
+Que vaut 67 en binaire ?
+1000011
+1000001
+1000101
+
+Quel est la taille max d'un graphe planaire complet?
+6
+7
+5
+3
+
+Je commence par "e". Je finis par "e". Je contiens une lettre. Qui suis-je ?
+Une enveloppe
+Ete 
+E 
+Enceinte
+
+Je t' appartiens mais les autres m'utilisent plus que toi. Qui suis-je ?
+Ton prénom
+Les connaissances
+Ta console
+
+Qu'est-ce qui peut remplir tout un espace sans prendre de place ?
+L'eau
+Le feu
+La lumière.
+La terre
+
+Girafe = 3, Éléphant = 3, Hippopotame = 5, Lion = … ?
+4
+3
+2
+1
 Ma première lettre est un B, ma dernière un E.
 Je suis long, dur, je peux être droit mais la plupart du temps je ne le suis pas.
 Le gens me mangent souvent avec joie. Qui suis-je??
