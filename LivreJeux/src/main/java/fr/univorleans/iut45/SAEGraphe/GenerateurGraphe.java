@@ -26,15 +26,19 @@ public class GenerateurGraphe {
 
         if (!fin.getDeb()) fin.setFin();
 
+        System.out.println(fin);
+
+        System.out.println(fin.getFin());
+
+
         for (Page page:graphe.vertexSet()) {
-            
-            if (!page.getFin()){    
+            if (!page.getFin()){
                 int tentatives = 0;
                 while ((page.getNbReponses()>graphe.outDegreeOf(page)) && tentatives<100){
                     try {
                         
-                        graphe.addEdge(page,randomPageJoinable(new ArrayList<>(graphe.vertexSet())));
-
+                        graphe.addEdge(page,randomPage(new ArrayList<>(graphe.vertexSet())));
+                        
                         tentatives ++;
                     } catch (NoJoinablePageException e){
                         System.err.println("Erreur: "+e.getMessage());
@@ -45,9 +49,10 @@ public class GenerateurGraphe {
                 
 
             }
+
         }
 
-
+        System.out.println("graphe termine");
         return graphe;
 
     }
@@ -58,7 +63,7 @@ public class GenerateurGraphe {
         while (graphe.vertexSet().size() < ordre) {
             graphe.addVertex(randomPage(pages));
         }
-        System.out.println(graphe.vertexSet());
+        System.out.println(graphe.vertexSet()+"\n\n\n nuage de points généré");
         return graphe;
     }
 
@@ -67,7 +72,7 @@ public class GenerateurGraphe {
         return liste.get(this.choix.nextInt(liste.size()));
     }
 
-    private Page randomPageJoinable(List<Page> liste) throws NoJoinablePageException{
+    /*private Page randomPageJoinable(List<Page> liste) throws NoJoinablePageException{
         if (liste.size()>1) {
             boolean found = false;
             while (!found) {
@@ -85,7 +90,7 @@ public class GenerateurGraphe {
         }
         throw new NoJoinablePageException("La liste est vide");
         
-    }
+    }*/
 
 
 }
