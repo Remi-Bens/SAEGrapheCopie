@@ -112,7 +112,7 @@ public class Graphe {
                 this.explorePage(possibilites.get(1));
             }
             
-        }
+        } 
 
     }
 
