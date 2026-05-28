@@ -13,20 +13,12 @@ public class Page{
     private int pos;
 
 
-    public Page(int numero,  String enigme,boolean objet){
-        this.numero = numero;
-        this.enigme = enigme;
-        this.reponse = new ArrayList<>();
-        this.lecture = false;
-        this.objet = objet;
-    }
-
-    public Page(int numero,  String enigme,List<String> rep,boolean objet, int pos){
+    public Page(int numero,  String enigme,List<String> rep, int pos){
         this.numero = numero;
         this.enigme = enigme;
         this.reponse = rep;
         this.lecture = false;
-        this.objet = objet;
+        this.objet = false;
         this.pos = pos;
     }
 
@@ -40,6 +32,10 @@ public class Page{
 
     public boolean getObjet() {
         return this.objet;
+    }
+
+    public void setObjet(boolean ob){
+        this.objet = ob;
     }
 
     public boolean getFin(){

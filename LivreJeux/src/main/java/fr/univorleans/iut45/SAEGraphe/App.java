@@ -14,7 +14,7 @@ public class App
     public static void main( String[] args ) {
         List<Page> l = new ArrayList<>();
         for(int i = 0; i< 100; i++){
-            l.add(new Page(i, "", false));
+            l.add(new Page(i, " ", null, 0));
         }
 
         Map<String,List<String>> enigmes = new HashMap<>();
@@ -43,6 +43,7 @@ public class App
         enigmes.put("Si je jette un caillou bleu dans la mer rouge, comment devient-il?",List.of("Violet","Noir","Mouillé"));
         enigmes.put("Je monte et je descends, et pourtant je ne bouge pas. Qui suis-je?",List.of("Un ascenseur en panne","Le prix de la salade sodebo du leclerc","Un escalier"));
 
+       
         Affichage a = new Affichage(false);
         a.Bienvenue();
     }
