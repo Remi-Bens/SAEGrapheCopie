@@ -35,6 +35,13 @@ public class App
         enigmes.put("Qu'est-ce qui peut remplir tout un espace sans prendre de place ?",List.of("L'eau", "Le feu", "La lumière.", "La terre"));
         enigmes.put("Girafe = 3, Eléphant = 3, Hippopotame = 5, Lion = … ?",List.of("4", "3", "2", "1"));
         enigmes.put("Ma première lettre est un B, ma dernière un E. Je suis long, dur, je peux être droit mais la plupart du temps je ne le suis pas. Le gens me mangent souvent avec joie. Qui suis-je??",List.of("Carambar", "Baguette", "Banane"));
+        enigmes.put("Je suis petit. Je suis carré. Je suis jaune. Qu'est-ce que je suis?",List.of("Un petit carré jaune","Une pomme de pin","Une meule de gruyère"));
+        enigmes.put("Quel mot est toujours ecrit mal dans le dictionnaire?",List.of("Mal","Hippopotomonstrosesquippedaliophobie","Tractopelle"));
+        enigmes.put("Un chasseur quitte sa maison, marche $1\text{ km}$ vers le Sud, puis $1\text{ km}$ vers l'Est, et enfin $1\text{ km}$ vers le Nord. Il se retrouve pile devant sa maison. Là, il voit un ours. De quelle couleur est l'ours ?",List.of("Blanc","Brun","Rouge"));
+        enigmes.put("Si un avion s'écrase pile sur la frontière exacte entre la France et la Belgique, où enterre-t-on les survivants ?",List.of("En France","En Belgique","Enterrer des personnes vivantes est considéréé comme un meurtre en France comme en Belgique, donc on ne les enterre pas."));
+        enigmes.put("Le père d'Antonio a 3 fils: Aymerico, Matteo et?",List.of("Remiggio","Antonio","Jean-François"));
+        enigmes.put("Si je jette un caillou bleu dans la mer rouge, comment devient-il?",List.of("Violet","Noir","Mouillé"));
+        enigmes.put("Je monte et je descends, et pourtant je ne bouge pas. Qui suis-je?",List.of("Un ascenseur en panne","Le prix de la salade sodebo du leclerc","Un escalier"));
 
        
         Affichage a = new Affichage(false);
