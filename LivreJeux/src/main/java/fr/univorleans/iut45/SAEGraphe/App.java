@@ -4,6 +4,13 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
+import org.jgrapht.Graph;
+import org.jgrapht.Graphs;
+import org.jgrapht.graph.DefaultDirectedGraph;
+import org.jgrapht.graph.DefaultEdge;
+
 
 /**
  * Hello world!
@@ -12,14 +19,10 @@ import java.util.List;
 public class App 
 {
     public static void main( String[] args ) {
-        List<Page> l = new ArrayList<>();
-        for(int i = 0; i< 100; i++){
-            l.add(new Page(i, " ", null, 0));
-        }
+
+        Random random = new Random();
 
         Map<String,List<String>> enigmes = new HashMap<>();
-
-        //format: enigmes.put("enigme",List.of("rep1","rep2","rep3"));
 
         enigmes.put("Que dit un coq pour séduire une poule ?",List.of("T'as de beau yeux", "T'as un beau bec", "T'as de oeufs tu sais ?"));
         enigmes.put("À quelle heure, sur un radio-réveil au format 00:00, la somme de tous les chiffres est maximale ?",List.of("19:59", "23:59", "18:59", "12:59"));
@@ -43,8 +46,46 @@ public class App
         enigmes.put("Si je jette un caillou bleu dans la mer rouge, comment devient-il?",List.of("Violet","Noir","Mouillé"));
         enigmes.put("Je monte et je descends, et pourtant je ne bouge pas. Qui suis-je?",List.of("Un ascenseur en panne","Le prix de la salade sodebo du leclerc","Un escalier"));
 
-       
+
+        List<Page> l = new ArrayList<>();
+        int cpt = 0;
+        for(String enigme:enigmes.keySet()){
+
+            
+            l.add(new Page(cpt,enigme,enigmes.get(enigme), 0));
+
+            cpt++;
+        }
+
+        System.out.println(cpt+" pages");
+
+        /*or (Page page:l){
+            System.out.println(page.afficheEnig());
+        }*/
+
+        GenerateurGraphe gen = new GenerateurGraphe();
+
+        Graph<Page,DefaultEdge> graphos = gen.creation(l.size(), 10, l);
+
+        System.out.println("creation terminee");
+
+        System.out.println(graphos.edgeSet());
+
+        for(Page page:graphos.vertexSet()){
+            System.out.println(page.getFin()+" "+page);
+        }
+
+        AlgoLarge al = new AlgoLarge(graphos);
+        System.out.println(al.start());
+        
+        
+
+        //format: enigmes.put("enigme",List.of("rep1","rep2","rep3"));
+
+        
+        /* 
         Affichage a = new Affichage(false);
         a.Bienvenue();
+        */
     }
 }
