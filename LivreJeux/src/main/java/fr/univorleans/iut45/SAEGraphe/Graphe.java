@@ -59,7 +59,7 @@ public class Graphe {
         return inventaireTrouve>=10;
     }
 
-    public Graph<Page,DefaultEdge> getGraphe(){
+    public DefaultDirectedGraph<Page,DefaultEdge> getGraphe(){
         return this.graphe;
     }
 
@@ -99,7 +99,10 @@ public class Graphe {
                 this.affichage.erreur("Veuillez entrer un caractère valide!");
                 this.explorePage(page);
             }
+        } else if (page.getNum()==-1){
+            affichage.finale();
         } else {
+        
             affichage.arriveeFin();
             if (this.tousObjets()) {
                 affichage.fin();
