@@ -16,9 +16,9 @@ public class GenerateurGraphe {
 
     private Random choix = new Random();
 
-    public Graph<Page,DefaultEdge> creation(int ordre,int nbObjets,List<Page> pages){
+    public DefaultDirectedGraph<Page,DefaultEdge> creation(int ordre,int nbObjets,List<Page> pages){
 
-        Graph<Page,DefaultEdge> graphe = nuageDePoints(ordre, pages);
+        DefaultDirectedGraph<Page,DefaultEdge> graphe = nuageDePoints(ordre, pages,nbObjets);
 
         randomPage(new ArrayList<>(graphe.vertexSet())).setDeb(); //on met une carte aléatoire en début
 
@@ -51,25 +51,46 @@ public class GenerateurGraphe {
             }
 
         }
+        Page sortie = new Page();
+        graphe.addVertex(sortie);
+
+        graphe.addEdge(fin,sortie);
+        graphe.addEdge(fin,randomPageNotFin(pages)); //cas où les objets ne sont pas tous collectés
 
         System.out.println("graphe termine");
         return graphe;
 
     }
 
-    private Graph<Page,DefaultEdge> nuageDePoints(int ordre,List<Page> pages){
-        Graph<Page,DefaultEdge> graphe = new DefaultDirectedGraph<>(DefaultEdge.class);
+    private DefaultDirectedGraph<Page,DefaultEdge> nuageDePoints(int ordre,List<Page> pages,int objets){
+        DefaultDirectedGraph<Page,DefaultEdge> graphe = new DefaultDirectedGraph<>(DefaultEdge.class);
+
+        int objRestants = objets;
 
         while (graphe.vertexSet().size() < ordre) {
-            graphe.addVertex(randomPage(pages));
+            Page choixPage = randomPage(pages);
+
+            if (objets>0) choixPage.setObjet(true);
+            objets --;
+
+            graphe.addVertex(choixPage);
         }
-        System.out.println(graphe.vertexSet()+"\n\n\n nuage de points généré");
         return graphe;
     }
 
 
     private Page randomPage(List<Page> liste) {
         return liste.get(this.choix.nextInt(liste.size()));
+    }
+
+    private Page randomPageNotFin(List<Page> liste) throws PageNotFoundException{
+        int cpt = 0;
+        while (cpt<100) {
+            Page choix = randomPage(liste);
+            if (!choix.getFin()) return choix;
+            cpt ++;
+        }
+        throw new PageNotFoundException("Soit vous venez d'avoir la chance la plus improbable du millénaire, soit la liste ne contient que la fin.");
     }
 
     /*private Page randomPageJoinable(List<Page> liste) throws NoJoinablePageException{
