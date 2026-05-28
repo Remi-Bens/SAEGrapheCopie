@@ -14,12 +14,12 @@ public class Page{
 
 
     public Page(){
-        this.numero = null;
-        this.enigme = null;
-        this.reponse = null;
+        this.numero = -1;
+        this.enigme = "";
+        this.reponse = new ArrayList<>();
         this.lecture = false;
         this.objet = false;
-        this.pos = null;
+        this.pos = 0;
     }
 
     public Page(int numero,  String enigme,List<String> rep, int pos){
@@ -67,6 +67,10 @@ public class Page{
 
     public boolean estLue(){
         return this.lecture;
+    }
+
+    public void ajouteReponse(String reponse){
+        
     }
 
     public void lire(){
