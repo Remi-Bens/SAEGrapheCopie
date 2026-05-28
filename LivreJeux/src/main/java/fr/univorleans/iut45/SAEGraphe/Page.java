@@ -13,6 +13,15 @@ public class Page{
     private int pos;
 
 
+    public Page(){
+        this.numero = null;
+        this.enigme = null;
+        this.reponse = null;
+        this.lecture = false;
+        this.objet = false;
+        this.pos = null;
+    }
+
     public Page(int numero,  String enigme,List<String> rep, int pos){
         this.numero = numero;
         this.enigme = enigme;
@@ -44,7 +53,7 @@ public class Page{
     }
 
     public boolean getDeb(){
-        if(this.pos <= 0){return true;}
+        if(this.pos < 0){return true;}
         return false;
     }
 
@@ -66,6 +75,8 @@ public class Page{
 
     public void setFin(){
         this.pos = 1;
+        this.enigme = "psartek";
+        this.reponse = new ArrayList<>();
     }
 
     public void setDeb(){
@@ -80,5 +91,12 @@ public class Page{
         phr += String.valueOf(cpt)+" : "+i+"\n";
         cpt +=1;}
         return phr;
+    }
+
+    @Override
+    public String toString() {
+        if (this.pos < 0) return "Début";
+        if (this.pos > 0) return "Finitoto";
+        return "Page " + this.numero;
     }
 }
