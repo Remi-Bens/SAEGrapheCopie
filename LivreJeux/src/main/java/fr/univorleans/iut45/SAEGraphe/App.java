@@ -81,39 +81,112 @@ public class App
 
         GenerateurGraphe gen = new GenerateurGraphe(); 
 
-        DefaultDirectedGraph<Page,DefaultEdge> graphos = gen.creation(l.size()/4, 19, l); //création du graphe pondéré avec objets debut et fin
+        DefaultDirectedGraph<Page,DefaultEdge> grapheFacile = gen.creation(l.size()/4, 20, l); //création du graphe pondéré avec objets debut et fin
+        DefaultDirectedGraph<Page,DefaultEdge> grapheMid = gen.creation(l.size()/2, 15, l);
+        DefaultDirectedGraph<Page,DefaultEdge> grapheDur = gen.creation(l.size(), 15, l);
+       
+        //sauvegarde et chargement du parcours facile pour exemple
+
+        Graphe parcoursFacile = new Graphe(grapheFacile); 
+        Graphe parcoursMid = new Graphe(grapheMid);
+        Graphe parcoursDur = new Graphe(grapheDur);
+
+        if (parcoursFacile.sauvegarde("coucou.txt")) System.out.println("Graphe enregistré avec succès.");
+
+        Graphe parcoursFacile2 = new Graphe();
+
+        if (parcoursFacile2.charger("coucou.txt")) System.out.println("Graphe chargé avec succès. (enfin)");
 
         
-        Graphe parcoursGraphe = new Graphe(graphos); 
-
-        
-        Graphe copie1 = parcoursGraphe.duplication(); //copie du graphe pour le parcourir dans les algos
-        Graphe copie2 = parcoursGraphe.duplication();
 
         //début du jeu
 
-        parcoursGraphe.start(); 
+        //parcoursFacile2.start(); //parcours facile est humainement jouable
 
+        //facile----------------------
+        
+        
         //parcours en largeur
+
+        
+
+        Graphe copie1 = parcoursFacile.duplication();
+        Graphe copie2 = parcoursFacile.duplication();
 
         AlgoLarge al = new AlgoLarge(copie1);
 
-        long deb = System.currentTimeMillis();
-        al.start();
-        long fin = System.currentTimeMillis();
+        long deb = System.nanoTime();
+        int d = al.start();
+        long fin = System.nanoTime();
         long temps = fin - deb;
 
-        System.out.println("L'algorithme de parcours en largeur a tourné pendant "+temps+" ms");
+        System.out.println("GRAPHE FACILE");
+        System.out.println("L'algorithme de parcours en largeur a tourné pendant "+temps/1000000.0+" ms pour une duree totale de "+d);
 
         //parcours en prof
 
         AlgoPronf aP = new AlgoPronf(copie2);
 
-        long deb2 = System.currentTimeMillis();
-        al.start();
-        long fin2 = System.currentTimeMillis();
+        long deb2 = System.nanoTime();
+        int d2 = aP.start();
+        long fin2 = System.nanoTime();
         long temps2 = fin2 - deb2;
 
-        System.out.println("L'algorithme de parcours en profondeur a tourné pendant "+temps2+" ms");
+        System.out.println("L'algorithme de parcours en profondeur a tourné pendant "+temps2/1000000.0+" ms pour une duree totale de "+d2);
+
+        //mid---------------------
+
+        Graphe copie3 = parcoursMid.duplication();
+        Graphe copie4 = parcoursMid.duplication();
+
+
+        al = new AlgoLarge(copie3);
+
+        deb = System.nanoTime();
+        d = al.start();
+        fin = System.nanoTime();
+        temps = fin - deb;
+
+        System.out.println("GRAPHE INTERMEDIAIRE");
+        System.out.println("L'algorithme de parcours en largeur a tourné pendant "+temps/1000000.0+" ms pour une duree totale de "+d);
+
+        //parcours en prof
+
+        aP = new AlgoPronf(copie4);
+
+        deb2 = System.nanoTime();
+        d2 = aP.start();
+        fin2 = System.nanoTime();
+        temps2 = fin2 - deb2;
+
+        System.out.println("L'algorithme de parcours en profondeur a tourné pendant "+temps2/1000000.0+" ms pour une duree totale de "+d2);
+
+        //dur ---------------------
+
+        Graphe copie5 = parcoursDur.duplication();
+        Graphe copie6 = parcoursDur.duplication();
+
+
+        al = new AlgoLarge(copie5);
+
+        deb = System.nanoTime();
+        d = al.start();
+        fin = System.nanoTime();
+        temps = fin - deb;
+
+        System.out.println("GRAPHE DIFFICILE");
+        System.out.println("L'algorithme de parcours en largeur a tourné pendant "+temps/1000000.0+" ms pour une duree totale de "+d);
+
+        //parcours en prof
+
+        aP = new AlgoPronf(copie6);
+
+        deb2 = System.nanoTime();
+        d2 = aP.start();
+        fin2 = System.nanoTime();
+        temps2 = fin2 - deb2;
+
+        System.out.println("L'algorithme de parcours en profondeur a tourné pendant "+temps2/1000000.0+" ms pour une duree totale de "+d2);
+        //finito pipeau
     }
 }

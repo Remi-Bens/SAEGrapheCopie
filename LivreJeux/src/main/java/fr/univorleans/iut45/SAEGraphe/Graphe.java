@@ -1,16 +1,26 @@
 package fr.univorleans.iut45.SAEGraphe;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import org.jgrapht.Graph;
 import org.jgrapht.Graphs;
+
 import org.jgrapht.graph.DefaultDirectedGraph;
 import org.jgrapht.graph.DefaultEdge;
 import java.util.Random;
 
-public class Graphe {
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.io.IOException;
+
+import java.io.Serializable;
+
+public class Graphe implements Serializable{
     
     private DefaultDirectedGraph<Page,DefaultEdge> graphe;
     private List<String> inventaire;
@@ -71,6 +81,54 @@ public class Graphe {
         return copie;
     }
 
+    public boolean sauvegarde(String adresse){
+
+        try{
+            FileOutputStream fichier = new FileOutputStream(adresse);
+            ObjectOutputStream obj = new ObjectOutputStream(fichier);
+
+            obj.writeObject(this);
+
+            obj.close();
+            fichier.close();
+
+            //System.out.println("terminado");
+
+            return true;
+
+        }catch (IOException e){
+            System.err.println("La sauvegarde n'a pas fonctionné: "+e.getMessage());
+        } 
+        return false;
+        
+    }
+
+    public boolean charger(String adresse){
+
+        try{
+            FileInputStream fichier = new FileInputStream(adresse); //lecture du truc
+            ObjectInputStream obj = new ObjectInputStream(fichier);  //transcription
+
+            Graphe sauveGraphe = (Graphe) obj.readObject();
+
+            this.affichage = sauveGraphe.affichage;
+            this.graphe = sauveGraphe.graphe;
+            this.inventaire = sauveGraphe.inventaire;
+            this.inventaireTrouve = sauveGraphe.inventaireTrouve;
+
+            obj.close();
+            fichier.close();
+
+            return true;
+        } catch (IOException e ) {
+            System.err.println("Erreur lors du chargement: "+e.getMessage());
+            
+        } catch (ClassNotFoundException e2){
+            System.err.println("Classe corrompue ou mal lue: "+e2.getMessage());
+        }
+        return false;
+    }
+
     public Page premierePage() throws PageNotFoundException{
         for (Page page:graphe.vertexSet()) {
             if (page.getDeb()) {
@@ -81,7 +139,7 @@ public class Graphe {
     }
 
     public boolean tousObjets(){
-        return inventaireTrouve>=5;        //A REMETTRE A 10
+        return inventaireTrouve>=10;        //A REMETTRE A 10
     }
 
     public DefaultDirectedGraph<Page,DefaultEdge> getGraphe(){
@@ -131,10 +189,16 @@ public class Graphe {
             affichage.arriveeFin();
             if (this.tousObjets()) {
                 affichage.fin();
-                this.explorePage(possibilites.get(0));
+                if (!possibilites.isEmpty()) this.explorePage(possibilites.get(0));
+                
             } else {
                 affichage.refusFin();
-                this.explorePage(possibilites.get(1));
+                try{
+                    this.explorePage(this.premierePage());
+                } catch (PageNotFoundException e) {
+                    System.err.println("Oula mon reuf ya pas de première page là");
+                }
+                
             }
             
         } 

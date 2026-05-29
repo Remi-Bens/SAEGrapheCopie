@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Page{
+import java.io.Serializable;
+
+public class Page implements Serializable{
 
     private int numero;
     private String enigme;
@@ -47,6 +49,10 @@ public class Page{
 
     public int getNum(){
         return this.numero;
+    }
+
+    public String getEnigme(){
+        return this.enigme;
     }
 
     public boolean getObjet() {

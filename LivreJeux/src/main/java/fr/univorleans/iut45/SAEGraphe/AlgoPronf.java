@@ -6,13 +6,15 @@ public class AlgoPronf {
     
     Stack<Page> pile;
     Graphe gr;
+    int duree;
 
     public AlgoPronf(Graphe g){
         this.pile = new Stack<>();
         this.gr = g;
+        this.duree = 0;
     }
 
-    public boolean start(){
+    public int start(){
 
         Page prem = gr.premierePage();
         prem.lire();
@@ -26,8 +28,9 @@ public class AlgoPronf {
 
             Page suiv = pile.pop();
             suiv.lire();
+            this.duree += suiv.getEnigme().length();
 
-            System.out.println("La page n° "+suiv.getNum()+" est lu !");
+            //System.out.println("La page n° "+suiv.getNum()+" est lu !");
 
             for(DefaultEdge edge : gr.getGraphe().outgoingEdgesOf(suiv)){
 
@@ -37,6 +40,6 @@ public class AlgoPronf {
                 }
             }
         }
-        return true;
+        return this.duree;
     }
 }

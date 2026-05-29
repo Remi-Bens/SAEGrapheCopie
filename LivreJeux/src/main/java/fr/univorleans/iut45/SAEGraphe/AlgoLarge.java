@@ -7,13 +7,15 @@ import org.jgrapht.graph.DefaultEdge;
 public class AlgoLarge {
     List<Page> liste;
     Graphe gr;
+    int duree;
 
 public AlgoLarge(Graphe g){
         this.liste = new ArrayList<>();
         this.gr = g;
+        this.duree = 0;
     }
 
-    public boolean start(){
+    public int start(){
 
         Page prem = gr.premierePage();
         prem.lire();
@@ -26,8 +28,9 @@ public AlgoLarge(Graphe g){
 
             Page suiv = liste.remove(0);
             suiv.lire();
+            this.duree += suiv.getEnigme().length();
 
-            System.out.println("La page n° "+suiv.getNum()+" est lu !");
+            //System.out.println("La page n° "+suiv.getNum()+" est lu !");
 
             for(DefaultEdge edge : gr.getGraphe().outgoingEdgesOf(suiv)){
 
@@ -37,6 +40,6 @@ public AlgoLarge(Graphe g){
                 }
             }
         }
-        return true;
+        return this.duree;
     }
 }

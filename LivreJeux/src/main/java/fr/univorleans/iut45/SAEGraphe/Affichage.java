@@ -1,11 +1,14 @@
 package fr.univorleans.iut45.SAEGraphe;
 
 import java.util.List;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
-public class Affichage {
+import java.io.Serializable;
+
+public class Affichage implements Serializable{
 
     private Random r;
     private boolean fin;
