@@ -2,8 +2,11 @@ package fr.univorleans.iut45.SAEGraphe;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-public class Page{
+import java.io.Serializable;
+
+public class Page implements Serializable{
 
     private int numero;
     private String enigme;
@@ -31,12 +34,25 @@ public class Page{
         this.pos = pos;
     }
 
+    public Page(Page autre){
+        this.numero = autre.numero;
+        this.enigme = new String(autre.enigme);
+        this.reponse = new ArrayList<>(autre.reponse);
+        this.lecture = autre.lecture;
+        this.objet = autre.objet;
+        this.pos = autre.pos;
+    }
+
     public void setReponse(String choix){
         this.reponse.add(choix);
     }
 
     public int getNum(){
         return this.numero;
+    }
+
+    public String getEnigme(){
+        return this.enigme;
     }
 
     public boolean getObjet() {
@@ -77,6 +93,10 @@ public class Page{
         this.lecture = true;
     }
 
+    public void oublier(){
+        this.lecture = false;
+    }
+
     public void setFin(){
         this.pos = 1;
         this.enigme = "psartek";
@@ -99,8 +119,20 @@ public class Page{
 
     @Override
     public String toString() {
-        if (this.pos < 0) return "Début";
-        if (this.pos > 0) return "Finitoto";
+        if (this.pos < 0) return "Début "+ this.numero;
+        if (this.pos > 0) return "Finitoto "+ this.numero;
         return "Page " + this.numero;
+    }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(this.getNum());
+    }
+    @Override
+    public boolean equals(Object o){
+        if (this == o) return true;
+        if (!(o instanceof Page)) return false;
+        Page p2 = (Page) o;
+        return (p2.getNum()==this.getNum());
     }
 }

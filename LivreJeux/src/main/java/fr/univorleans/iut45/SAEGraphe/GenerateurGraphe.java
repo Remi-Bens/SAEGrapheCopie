@@ -12,6 +12,15 @@ import org.jgrapht.Graphs;
 import org.jgrapht.graph.DefaultDirectedGraph;
 import org.jgrapht.graph.DefaultEdge;
 
+/*import org.jgrapht.io.dot.DOTExporter;
+
+
+import org.odftoolkit.odfdom.doc.OdfTextDocument;
+import org.odftoolkit.odfdom.dom.element.text.TextParagraphElementBase;
+
+import java.io.FileWriter;
+import java.io.IOException;*/
+
 public class GenerateurGraphe {
 
     private Random choix = new Random();
@@ -26,9 +35,9 @@ public class GenerateurGraphe {
 
         if (!fin.getDeb()) fin.setFin();
 
-        System.out.println(fin);
+        //System.out.println(fin);
 
-        System.out.println(fin.getFin());
+        //System.out.println(fin.getFin());
 
 
         for (Page page:graphe.vertexSet()) {
@@ -55,9 +64,13 @@ public class GenerateurGraphe {
         graphe.addVertex(sortie);
 
         graphe.addEdge(fin,sortie);
-        graphe.addEdge(fin,randomPageNotFin(pages)); //cas où les objets ne sont pas tous collectés
+        graphe.addEdge(fin,randomPageNotFin(new ArrayList<>(graphe.vertexSet()))); //cas où les objets ne sont pas tous collectés
 
-        System.out.println("graphe termine");
+
+
+        //DOTExporter<String, DefaultEdge> exporter = new DOTExporter<>();
+        //exporter.exportGraph(graph, new FileWriter("graph.dot"));
+
         return graphe;
 
     }
