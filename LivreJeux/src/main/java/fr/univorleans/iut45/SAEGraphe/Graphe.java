@@ -22,7 +22,7 @@ public class Graphe {
         this.graphe = new DefaultDirectedGraph<>(DefaultEdge.class);
         
         this.inventaire = new ArrayList<>();
-        this.inventaire.addAll(Arrays.asList("","","","","","Fourchette","Marteau-piqueur","Documentation d'IJVM","Caillou stylé","iPhone 7","Salade Sodebo au thon","Conserve de Maïs","Bonbon crocodile à la framboise","Pied de biche","Article de la jurisprudence de la Cour de cassation de l'Assemblée plénière du 25 février 2000 n° 97-17.378"));
+        this.inventaire.addAll(Arrays.asList("Table de routage","Abricot en plastique","Aspirateur laveur Dyson V15s Detect Submarine™","Clé USB suspecte","Copie physique du fameux jeu PC Splat IUT'O","Manuel d'utilisation de grille pain","Invariant de boucle","Lame d'Aragorn, fils d'Arathorn et héritier d'Isildur, pourfendeuse d'Orcs, reforgée par les Elfes pour vaincre Sauron","Script python nommé Anakin_v2.py","Barbecue electrique HIGH ONE HO-ELTAB4124\nl'étiquette est encore attachée, il semble avoir coûté 19€ chez Electro Depot","Fourchette","Marteau-piqueur","Documentation d'IJVM","Caillou stylé","iPhone 7","Salade Sodebo au thon","Conserve de Maïs","Bonbon crocodile à la framboise","Pied de biche","Article de la jurisprudence de la Cour de cassation de l'Assemblée plénière du 25 février 2000 n° 97-17.378"));
 
         this.inventaireTrouve = 0;
 
@@ -34,7 +34,7 @@ public class Graphe {
         this.graphe = graphe;
         
         this.inventaire = new ArrayList<>();
-        this.inventaire.addAll(Arrays.asList("","","","","","Fourchette","Marteau-piqueur","Documentation d'IJVM","Caillou stylé","iPhone 7","Salade Sodebo au thon","Conserve de Maïs","Bonbon crocodile à la framboise","Pied de biche","Article de la jurisprudence de la Cour de cassation de l'Assemblée plénière du 25 février 2000 n° 97-17.378"));
+        this.inventaire.addAll(Arrays.asList("Table de routage","Abricot en plastique","Aspirateur laveur Dyson V15s Detect Submarine™","Clé USB suspecte","Copie physique du fameux jeu PC Splat IUT'O","Manuel d'utilisation de grille pain","Invariant de boucle","Lame d'Aragorn, fils d'Arathorn et héritier d'Isildur, pourfendeuse d'Orcs, reforgée par les Elfes pour vaincre Sauron","Script python nommé Anakin_v2.py","Barbecue electrique HIGH ONE HO-ELTAB4124\nl'étiquette est encore attachée, il semble avoir coûté 19€ chez Electro Depot","Fourchette","Marteau-piqueur","Documentation d'IJVM","Caillou stylé","iPhone 7","Salade Sodebo au thon","Conserve de Maïs","Bonbon crocodile à la framboise","Pied de biche","Article de la jurisprudence de la Cour de cassation de l'Assemblée plénière du 25 février 2000 n° 97-17.378"));
 
 
         this.inventaireTrouve = 0;
@@ -42,8 +42,33 @@ public class Graphe {
         this.affichage = new Affichage(false);
     }
 
+    public Graphe(DefaultDirectedGraph graphe,List<String> inv,int invT){
+
+        this.graphe = graphe;
+        
+        this.inventaire = inv;
+
+        this.inventaireTrouve = invT;
+
+        this.affichage = new Affichage(false);
+    }
+
+    public void oublierPages(){
+        for (Page page:graphe.vertexSet()) {
+            page.oublier();
+        }
+    }
+
     public void start(){
-        this.explorePage(this.premierePage());
+
+        if (affichage.bienvenue()) this.explorePage(this.premierePage());
+        
+    }
+
+    public Graphe duplication(){
+        DupliGraphe dup = new DupliGraphe();
+        Graphe copie = new Graphe(dup.copie(this.graphe),this.inventaire,this.inventaireTrouve);
+        return copie;
     }
 
     public Page premierePage() throws PageNotFoundException{
@@ -56,7 +81,7 @@ public class Graphe {
     }
 
     public boolean tousObjets(){
-        return inventaireTrouve>=10;
+        return inventaireTrouve>=5;        //A REMETTRE A 10
     }
 
     public DefaultDirectedGraph<Page,DefaultEdge> getGraphe(){
@@ -64,14 +89,14 @@ public class Graphe {
     }
 
     public void explorePage(Page page){
-        System.out.println("objets trouvés: "+inventaireTrouve);
+        System.out.println("\n\nPage "+page.getNum()+" - "+"objets trouvés: "+inventaireTrouve+"----------");
         List<Page> possibilites = Graphs.successorListOf(this.graphe,page);
-        if (!page.getFin()){ //just si pas la page finale
+        if (!page.getFin() && page.getNum()!=-1){ //just si pas la page finale
 
-            System.out.println("affichage de l'enigme");
+            
 
             if (page.getObjet()){
-                affichage.objetTrouve(inventaire.get(inventaireTrouve));
+                affichage.objetTrouve(inventaire.get((int)System.currentTimeMillis()%inventaire.size()-1));
                 this.inventaireTrouve++;
                 page.setObjet(false);
             }

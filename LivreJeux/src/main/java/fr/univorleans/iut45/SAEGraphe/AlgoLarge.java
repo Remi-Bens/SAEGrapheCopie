@@ -9,46 +9,34 @@ public class AlgoLarge {
     Graphe gr;
 
 public AlgoLarge(Graphe g){
-    this.liste = new ArrayList<>();
-    this.gr = g;
+        this.liste = new ArrayList<>();
+        this.gr = g;
     }
 
     public boolean start(){
-        
+
         Page prem = gr.premierePage();
         prem.lire();
-
         for(DefaultEdge e : gr.getGraphe().outgoingEdgesOf(prem)){
             Page p = this.gr.getGraphe().getEdgeTarget(e);
             liste.add(p);
         }
 
         while(!liste.isEmpty()){
+
             Page suiv = liste.remove(0);
-            if(suiv.getFin()){
-                if(gr.tousObjets()){
+            suiv.lire();
 
-                    return true;
+            System.out.println("La page n° "+suiv.getNum()+" est lu !");
 
+            for(DefaultEdge edge : gr.getGraphe().outgoingEdgesOf(suiv)){
+
+                Page target = gr.getGraphe().getEdgeTarget(edge);
+                if(!target.estLue()){
+                    liste.add(target);
                 }
-            System.out.println("Il n'y a pas tout les objets nécessaire");
-            liste.add(suiv);
-            } else{
-
-                suiv.lire();
-
-                System.out.println("La page n° "+suiv.getNum()+" est lu !");}
-
-
-                for(DefaultEdge edge : gr.getGraphe().outgoingEdgesOf(suiv)){
-
-                    Page target = gr.getGraphe().getEdgeTarget(edge);
-
-                    if(!target.estLue()) {
-                        liste.add(target);
-                    }
-                }        
+            }
+        }
+        return true;
     }
-    return false;
-}
 }

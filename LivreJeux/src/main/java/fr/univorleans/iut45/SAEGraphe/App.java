@@ -24,6 +24,8 @@ public class App
 
         Map<String,List<String>> enigmes = new HashMap<>();
 
+        //importation des enigmes
+
         enigmes.put("Que dit un coq pour séduire une poule ?",List.of("T'as de beau yeux", "T'as un beau bec", "T'as de oeufs tu sais ?"));
         enigmes.put("À quelle heure, sur un radio-réveil au format 00:00, la somme de tous les chiffres est maximale ?",List.of("19:59", "23:59", "18:59", "12:59"));
         enigmes.put("Il y a un pere et un fils, à eux deux leurs âges est égal à 36 ans. Et le père à 30 ans de plus que le fils. Quel âge à le fils?", List.of("3 ans", "6 ans", "1 ans"));
@@ -45,7 +47,6 @@ public class App
         enigmes.put("Le père d'Antonio a 3 fils: Aymerico, Matteo et?",List.of("Remiggio","Antonio","Jean-François"));
         enigmes.put("Si je jette un caillou bleu dans la mer rouge, comment devient-il?",List.of("Violet","Noir","Mouillé"));
         enigmes.put("Je monte et je descends, et pourtant je ne bouge pas. Qui suis-je?",List.of("Un ascenseur en panne","Le prix de la salade sodebo du leclerc","Un escalier"));
-
         enigmes.put("On envoie un ARP who has sur votre machine. Quelle est l'adresse de destination ?", List.of("1A:2B:3C:4D:5E", "FF:FF:FF:FF:FF", "00:00:00:00:00"));
         enigmes.put("Plus j'ai de gardiens, moins je suis gardé. Qui suis-je ?", List.of("Un secret", "Une clé", "De l'argent"));
         enigmes.put("Qu'est-ce qui a des dents, mais ne mange pas ?",List.of("Un peigne", "Le soleil", "un Sèche cheveux"));
@@ -68,43 +69,51 @@ public class App
         enigmes.put("Quel nombre suit cette suite logique : 2-6-12-20-30-?", List.of("40", "36", "42", "0"));
         enigmes.put("Comment appelle-t-on les habitants de la Papouasie-Nouvelle-Guinée?", List.of("Les papous", "les papouillous", "Les papas", "Les papouasiens"));
 
-        List<Page> l = new ArrayList<>();
+
+        List<Page> l = new ArrayList<>(); //liste des pages à utiliser
         int cpt = 0;
         for(String enigme:enigmes.keySet()){
 
-            
             l.add(new Page(cpt,enigme,enigmes.get(enigme), 0));
 
             cpt++;
         }
 
-    
+        GenerateurGraphe gen = new GenerateurGraphe(); 
 
-        GenerateurGraphe gen = new GenerateurGraphe();
-
-        DefaultDirectedGraph<Page,DefaultEdge> graphos = gen.creation(l.size(), 15, l);
-
-        for(Page page:graphos.vertexSet()){ //debug des pages par numero
-            System.out.println(page.getFin()+" "+page);
-        }
-
-
-
-        Graphe parcoursGraphe = new Graphe(graphos);
-
-        parcoursGraphe.start();
-
-        /*AlgoLarge al = new AlgoLarge(graphos);
-        System.out.println(al.start());*/
-        
-        
-
-        //format: enigmes.put("enigme",List.of("rep1","rep2","rep3"));
+        DefaultDirectedGraph<Page,DefaultEdge> graphos = gen.creation(l.size()/4, 19, l); //création du graphe pondéré avec objets debut et fin
 
         
-        /* 
-        Affichage a = new Affichage(false);
-        a.Bienvenue();
-        */
+        Graphe parcoursGraphe = new Graphe(graphos); 
+
+        
+        Graphe copie1 = parcoursGraphe.duplication(); //copie du graphe pour le parcourir dans les algos
+        Graphe copie2 = parcoursGraphe.duplication();
+
+        //début du jeu
+
+        parcoursGraphe.start(); 
+
+        //parcours en largeur
+
+        AlgoLarge al = new AlgoLarge(copie1);
+
+        long deb = System.currentTimeMillis();
+        al.start();
+        long fin = System.currentTimeMillis();
+        long temps = fin - deb;
+
+        System.out.println("L'algorithme de parcours en largeur a tourné pendant "+temps+" ms");
+
+        //parcours en prof
+
+        AlgoPronf aP = new AlgoPronf(copie2);
+
+        long deb2 = System.currentTimeMillis();
+        al.start();
+        long fin2 = System.currentTimeMillis();
+        long temps2 = fin2 - deb2;
+
+        System.out.println("L'algorithme de parcours en profondeur a tourné pendant "+temps2+" ms");
     }
 }
