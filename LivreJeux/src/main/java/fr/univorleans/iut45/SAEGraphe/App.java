@@ -75,15 +75,31 @@ public class App
         for(String enigme:enigmes.keySet()){
 
             l.add(new Page(cpt,enigme,enigmes.get(enigme), 0));
-
             cpt++;
         }
+
+        List<Page> l2 = new ArrayList<>(); //liste des pages à utiliser
+        cpt = 0;
+        for(String enigme:enigmes.keySet()){
+
+            l2.add(new Page(cpt,enigme,enigmes.get(enigme), 0));
+            cpt++;
+        }
+
+        List<Page> l3 = new ArrayList<>(); //liste des pages à utiliser
+        cpt = 0;
+        for(String enigme:enigmes.keySet()){
+
+            l3.add(new Page(cpt,enigme,enigmes.get(enigme), 0));
+            cpt++;
+        }
+
 
         GenerateurGraphe gen = new GenerateurGraphe(); 
 
         DefaultDirectedGraph<Page,DefaultEdge> grapheFacile = gen.creation(l.size()/4, 20, l); //création du graphe pondéré avec objets debut et fin
-        DefaultDirectedGraph<Page,DefaultEdge> grapheMid = gen.creation(l.size()/2, 15, l);
-        DefaultDirectedGraph<Page,DefaultEdge> grapheDur = gen.creation(l.size(), 15, l);
+        DefaultDirectedGraph<Page,DefaultEdge> grapheMid = gen.creation(l2.size()/2, 15, l2);
+        DefaultDirectedGraph<Page,DefaultEdge> grapheDur = gen.creation(l3.size(), 15, l3);
        
         //sauvegarde et chargement du parcours facile pour exemple
 
@@ -101,7 +117,7 @@ public class App
 
         //début du jeu
 
-        //parcoursFacile2.start(); //parcours facile est humainement jouable
+        parcoursFacile2.start(); //parcours facile est humainement jouable
 
         //facile----------------------
         

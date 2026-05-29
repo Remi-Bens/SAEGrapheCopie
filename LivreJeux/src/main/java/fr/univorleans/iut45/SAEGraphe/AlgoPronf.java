@@ -27,18 +27,20 @@ public class AlgoPronf {
         while(!pile.isEmpty()){
 
             Page suiv = pile.pop();
-            suiv.lire();
-            this.duree += suiv.getEnigme().length();
+            if (!suiv.estLue()){
+                suiv.lire();
+                this.duree += suiv.getEnigme().length();
 
-            //System.out.println("La page n° "+suiv.getNum()+" est lu !");
+                //System.out.println("La page n° "+suiv.getNum()+" est lu !");
 
-            for(DefaultEdge edge : gr.getGraphe().outgoingEdgesOf(suiv)){
+                for(DefaultEdge edge : gr.getGraphe().outgoingEdgesOf(suiv)){
 
-                Page target = gr.getGraphe().getEdgeTarget(edge);
-                if(!target.estLue()){
-                    pile.push(target);
+                    Page target = gr.getGraphe().getEdgeTarget(edge);
+                    if(!target.estLue()){
+                        pile.push(target);
+                    }
                 }
-            }
+            }   
         }
         return this.duree;
     }
