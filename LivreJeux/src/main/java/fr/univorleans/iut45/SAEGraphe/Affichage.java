@@ -19,7 +19,7 @@ public class Affichage implements Serializable{
     }
 
     public boolean bienvenue(){
-        System.out.println("(c)Chabini Corporation 2026 LTD - All rights reserved\n\n\n\n\n\nBienvenue dans Vivez l'Aventure");
+        System.out.println("(c)Chabini Corporation 2026 LTD - All rights reserved - Vivezlaventure v1.1.2\n\n\n\n\n\nBienvenue dans Vivez l'Aventure");
         System.out.println("Explorez les différentes pages du livre, résolvez des énigmes, récupérez des objets indispensables et trouvez le chemin vers la sortie.");
         while (!fin){
             System.out.println("Etes vous prets à commencer l'aventure cher aventurier (O/N)?");

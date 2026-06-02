@@ -27,16 +27,18 @@ public AlgoLarge(Graphe g){
         while(!liste.isEmpty()){
 
             Page suiv = liste.remove(0);
-            suiv.lire();
-            this.duree += suiv.getEnigme().length();
+            if (!suiv.estLue()){
+                suiv.lire();
+                this.duree += suiv.getEnigme().length();
 
-            //System.out.println("La page n° "+suiv.getNum()+" est lu !");
+                //System.out.println("La page n° "+suiv.getNum()+" est lu !");
 
-            for(DefaultEdge edge : gr.getGraphe().outgoingEdgesOf(suiv)){
+                for(DefaultEdge edge : gr.getGraphe().outgoingEdgesOf(suiv)){
 
-                Page target = gr.getGraphe().getEdgeTarget(edge);
-                if(!target.estLue()){
-                    liste.add(target);
+                    Page target = gr.getGraphe().getEdgeTarget(edge);
+                    if(!target.estLue()){
+                        liste.add(target);
+                    }
                 }
             }
         }
