@@ -107,11 +107,11 @@ public class App
         Graphe parcoursMid = new Graphe(grapheMid);
         Graphe parcoursDur = new Graphe(grapheDur);
 
-        if (parcoursFacile.sauvegarde("coucou.txt")) System.out.println("Graphe enregistré avec succès.");
+        if (parcoursFacile.sauvegarde("sauvegarde.txt")) System.out.println("Graphe enregistré avec succès.");
 
         Graphe parcoursFacile2 = new Graphe();
 
-        if (parcoursFacile2.charger("coucou.txt")) System.out.println("Graphe chargé avec succès. (enfin)");
+        if (parcoursFacile2.charger("sauvegarde.txt")) System.out.println("Graphe chargé avec succès. (enfin)");
 
         
 

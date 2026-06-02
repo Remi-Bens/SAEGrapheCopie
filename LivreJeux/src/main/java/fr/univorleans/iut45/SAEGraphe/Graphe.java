@@ -154,7 +154,9 @@ public class Graphe implements Serializable{
             
 
             if (page.getObjet()){
-                affichage.objetTrouve(inventaire.get((int)System.currentTimeMillis()%inventaire.size()-1));
+
+                int obj = new Random().nextInt(inventaire.size());
+                affichage.objetTrouve(inventaire.get(obj));
                 this.inventaireTrouve++;
                 page.setObjet(false);
             }
